@@ -33,7 +33,7 @@ On the other hand, decompress it using the terminal.
  
 8. First, the resolution of the images is 481 x 321 or 321 x 481 with a total of 154K number of pixels. Second, the format of all images is JPG. This information was acquired with the command: ``identify -verbose "*.jpg"`` and looking directly at the folder containing the images.
 
-9. The database has 152 images in *landscape* orientation, this information is obtained through the command: ``find . -name "*.jpg" -exec identify {} \; | grep -i 321x481 | wc -l``, this is the similar as the command in the lab guide, only changed the search parameter and the image format.
+9. The database has 152 images in *landscape* orientation, this information is obtained through the command: ``find . -name "*.jpg" -exec identify {} \; | grep -i 321x481 | wc -l``, this is similar to the command in the lab guide, only changed the search parameter and the image format.
 
  
 10. All images was figurated in square (256x256) with the command ``mogrify -resize 256x256! *.jpg`` [8]
