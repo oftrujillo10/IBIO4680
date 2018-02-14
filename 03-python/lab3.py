@@ -14,9 +14,13 @@ from time import time
 
 tiempo_inicial = time()
 
+# Se descarga la base de datos
+
 if not path.exists('BSR_bsds500.tgz'):
 	url = 'http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz'
 	wget.download(url)
+
+# Se descomprime el archivo
 
 if not path.exists('BSR'):
 	tar = tarfile.open('BSR_bsds500.tgz')
@@ -27,6 +31,7 @@ ruta1 = os.getcwd() + '/BSR/BSDS500/data/images/test'
 ruta2 = os.getcwd() + '/BSR/BSDS500/data/groundTruth/test'
 contenido = os.listdir(ruta1)
 
+# Se buscan 8 imagenes aleatorias al igual que sus anotaciones
 
 for i in range(8):
   a = random.choice(contenido)
@@ -50,6 +55,8 @@ for i in range(8):
    d1 = np.concatenate((d1, ann1), axis=1)
    d2 = np.concatenate((d2, ann2), axis=1)
 
+# Se arman las imagenes de tres canales para concatenar
+
 bn = np.zeros((100 ,800, 3))
 bn[:, :, 0] = d1
 bn[:, :, 1] = d1
@@ -60,6 +67,7 @@ sn[:, :, 0] = d2
 sn[:, :, 1] = d2
 sn[:, :, 2] = d2
 
+# Se guarda la imagen resultante
 
 f = np.concatenate((c, bn, sn), axis=0)
 misc.imsave('resultado.png', f)
